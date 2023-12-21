@@ -21,12 +21,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-@tool
-extends RefCounted
-class_name GLSLShaderTool
+extends Node
 
+var mutex:Mutex = Mutex.new()
+var thread:Thread
 var rd:RenderingDevice
 
-func _init(rd:RenderingDevice):
-	self.rd = rd
-	
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	thread = thread.new()
+	thread.start(main_loop)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func add_job():
+	mutex.lock()
+	mutex.unlock()
+
+func main_loop():
+	pass

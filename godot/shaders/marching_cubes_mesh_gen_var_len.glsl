@@ -4,7 +4,7 @@
 * MIT License
 *
 * Copyright (c) 2023 Mark McKay
-* https://github.com/blackears/mri_marching_cubes
+* https://github.com/blackears/godot_marching_cubes
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -56,12 +56,6 @@ layout(set = 0, binding = 5, std430) restrict writeonly buffer ParamBufferWNorma
 	float[] values;
 }
 params_w_normal;
-
-//layout(rgba32f, set = 0, binding = 4) writeonly restrict uniform image1D result_points;
-//layout(rgba32f, set = 0, binding = 5) writeonly restrict uniform image1D result_normals;
-
-//layout(r32f, set = 0, binding = 4) writeonly restrict uniform image1D result_points;
-//layout(r32f, set = 0, binding = 5) writeonly restrict uniform image1D result_normals;
 
 const float pos_infinity = 1.0 / 0.0;
 
@@ -634,7 +628,6 @@ vec3 get_edge_point(int edge_idx, float[12] edge_weights) {
 
 float calc_edge_weight(float threshold, float p0_val, float p1_val) {
 	return (threshold - p0_val) / (p1_val - p0_val);
-//	return .5;
 }
 
 void main() {
@@ -701,8 +694,6 @@ void main() {
 		vec3 point = get_edge_point(tessellation_table[read_pos + i], edge_weights);
 	
 		vec3 local_point_pos = (point + pos) / params.grid_size;
-//		vec3 grad = normalize(texture(gradient_tex, local_point_pos).rgb);
-//		vec3 normal = -normalize(texture(gradient_tex, local_point_pos).rgb);
 		vec3 normal = -normalize(textureLod(gradient_tex, local_point_pos, mipmap_lod).rgb);
 		
 		params_w_point.values[write_pos + i * 3] = local_point_pos.x;

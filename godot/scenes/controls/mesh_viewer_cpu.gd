@@ -22,11 +22,40 @@
 # SOFTWARE.
 
 @tool
-extends RefCounted
-class_name GLSLShaderTool
+extends Control
 
-var rd:RenderingDevice
+signal updated
 
-func _init(rd:RenderingDevice):
-	self.rd = rd
+@export var mesh:ArrayMesh:
+	get:
+		return mesh
+	set(value):
+		if (value == mesh):
+			return
+		mesh = value
+		dirty = true
+
+var dirty:bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if dirty:
+		%mesh.mesh = mesh
+		updated.emit()
+		
+		dirty = false
+	pass
+	
+func export_gltf():
+	#Export
+	var doc:GLTFDocument = GLTFDocument.new()
+	var state:GLTFState = GLTFState.new()
+
+	doc.append_from_scene($SubViewportContainer/SubViewport/Node3D, state)
+	doc.write_to_filesystem(state, "../export/mesh.glb")
 	

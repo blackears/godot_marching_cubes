@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xd2y5yyb6mar"]
 
-[ext_resource type="Script" path="res://scenes/controls/mesh_viewer.gd" id="1_5w5cq"]
+[ext_resource type="Script" path="res://scenes/controls/mesh_viewer_cpu.gd" id="1_5w5cq"]
 [ext_resource type="PackedScene" uid="uid://bk62samj5dspq" path="res://scenes/controls/trackball_tumbler.tscn" id="2_565ey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j4q76"]

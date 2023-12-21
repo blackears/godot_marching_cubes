@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/tests/tests_and_code_gen.gd" id="1_alsi8"]
 [ext_resource type="PackedScene" uid="uid://bxq7xyukuhylf" path="res://scenes/controls/image_stack_viewer.tscn" id="2_k6yej"]
-[ext_resource type="PackedScene" uid="uid://xd2y5yyb6mar" path="res://scenes/controls/mesh_viewer.tscn" id="3_3w4k0"]
+[ext_resource type="PackedScene" uid="uid://xd2y5yyb6mar" path="res://scenes/controls/mesh_viewer_cpu.tscn" id="3_3w4k0"]
 
 [node name="test_mipmap_loader" type="Control"]
 layout_mode = 3
