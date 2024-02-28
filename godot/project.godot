@@ -14,3 +14,7 @@ config/name="Marching Cubes Viewer"
 run/main_scene="res://scenes/main_glsl_marching_cubes.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/marching_cubes_viewer/plugin.cfg")

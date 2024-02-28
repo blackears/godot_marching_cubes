@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://c2px2a3g8hml8"]
 
-[ext_resource type="PackedScene" uid="uid://c50dh8vftkubt" path="res://scenes/controls/marching_cubes_viewer.tscn" id="1_vhxtb"]
+[ext_resource type="PackedScene" uid="uid://c50dh8vftkubt" path="res://addons/marching_cubes_viewer/scenes/controls/marching_cubes_viewer.tscn" id="1_vhxtb"]
 [ext_resource type="Material" uid="uid://bvyqstj8ywgtx" path="res://materials/marching_cubes_points.tres" id="2_ll06s"]
-[ext_resource type="Script" path="res://scripts/resources/cpu/zipped_image_stack.gd" id="2_phlti"]
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scripts/resources/cpu/zipped_image_stack.gd" id="2_phlti"]
 [ext_resource type="Material" uid="uid://bf5jnyud87fm6" path="res://materials/marching_cube_default_mat.tres" id="3_g7x2m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nm4ga"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c50dh8vftkubt"]
 
-[ext_resource type="Script" path="res://scenes/controls/marching_cubes_viewer.gd" id="1_3texx"]
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scenes/controls/marching_cubes_viewer.gd" id="1_3texx"]
 [ext_resource type="Material" uid="uid://bf5jnyud87fm6" path="res://materials/marching_cube_default_mat.tres" id="2_3l8a5"]
 [ext_resource type="Material" uid="uid://bvyqstj8ywgtx" path="res://materials/marching_cubes_points.tres" id="3_h7783"]
 

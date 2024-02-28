@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://d2ygvqp7j6xsd"
+path="res://.godot/imported/kernel_convolution_3d.glsl-819e09b051d537fe690cdd17dc62285b.res"
+
+[deps]
+
+source_file="res://addons/marching_cubes_viewer/shaders/kernel_convolution_3d.glsl"
+dest_files=["res://.godot/imported/kernel_convolution_3d.glsl-819e09b051d537fe690cdd17dc62285b.res"]
+
+[params]
+

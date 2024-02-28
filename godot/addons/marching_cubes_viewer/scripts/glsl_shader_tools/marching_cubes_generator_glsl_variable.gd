@@ -42,7 +42,7 @@ func _init(rd:RenderingDevice):
 	mipmap_gen_rf_3d = MipmapGenerator_rf_3d.new(rd)
 	mipmap_gen_rgbaf_3d = MipmapGenerator_RGBAF_3D.new(rd)
 
-	marching_cubes_shader_rid = load_shader_from_path("res://shaders/marching_cubes_mesh_gen_var_len.glsl")
+	marching_cubes_shader_rid = load_shader_from_path("res://addons/marching_cubes_viewer/shaders/marching_cubes_mesh_gen_var_len.glsl")
 	pass
 
 func dispose():

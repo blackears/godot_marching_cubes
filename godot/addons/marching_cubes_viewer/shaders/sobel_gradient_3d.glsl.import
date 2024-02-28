@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://77h2cyryjyot"
+path="res://.godot/imported/sobel_gradient_3d.glsl-1c080c59bfd93a29a0b02a4be8d5fa16.res"
+
+[deps]
+
+source_file="res://addons/marching_cubes_viewer/shaders/sobel_gradient_3d.glsl"
+dest_files=["res://.godot/imported/sobel_gradient_3d.glsl-1c080c59bfd93a29a0b02a4be8d5fa16.res"]
+
+[params]
+

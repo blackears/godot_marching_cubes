@@ -32,7 +32,7 @@ func _init(rd:RenderingDevice):
 	super._init(rd)
 	#rd = RenderingServer.create_local_rendering_device()
 
-	var shader_file:RDShaderFile = load("res://shaders/mipmap_generator_rgba8_3d.glsl")
+	var shader_file:RDShaderFile = load("res://addons/marching_cubes_viewer/shaders/mipmap_generator_rgba8_3d.glsl")
 	if !shader_file.base_error.is_empty():
 		push_error("Error loading shader\n", shader_file.base_error)
 		return

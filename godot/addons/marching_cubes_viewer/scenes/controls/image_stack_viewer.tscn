@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxq7xyukuhylf"]
 
-[ext_resource type="Script" path="res://scenes/controls/image_stack_viewer.gd" id="1_5mq7w"]
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scenes/controls/image_stack_viewer.gd" id="1_5mq7w"]
 
 [node name="image_stack_viewer" type="Control"]
 layout_mode = 3
