@@ -27,6 +27,7 @@ class_name TrackballTumbler
 @export var focus:Vector3
 
 var mouse_down_pos:Vector2
+var mouse_down_xform:Transform3D
 #var dragging:bool = false
 enum DragStyle { NONE, TUMBLE, PAN }
 var drag_style:DragStyle = DragStyle.NONE
@@ -77,6 +78,9 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseButton:
 		if event.is_pressed():
+			mouse_down_pos = event.position
+			mouse_down_xform = global_transform
+				
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				var len:float = global_position.distance_to(focus)
 
@@ -96,7 +100,6 @@ func _unhandled_input(event):
 				look_at(focus)
 			
 			else:
-				mouse_down_pos = event.position
 				var result = calc_pitch_yaw(global_position, focus)
 				pitch_start = result["pitch"]
 				yaw_start = result["yaw"]
@@ -126,6 +129,15 @@ func _unhandled_input(event):
 			look_at(focus)
 
 		if drag_style == DragStyle.PAN:
+			var offset:Vector2 = event.position - mouse_down_pos
+			var len:float = global_position.distance_to(focus)
+			
+			var xform:Transform3D = mouse_down_xform
+			var cam_move:Vector3 = (-xform.basis.x * offset.x + xform.basis.y * offset.y) * len * .001
+			xform = xform.translated(cam_move)
+			focus = xform.origin - xform.basis.z * len
+			global_transform = xform
+			
 			pass
 
 

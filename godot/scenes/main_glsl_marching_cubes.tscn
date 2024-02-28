@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bylhfbpma41vf"]
 
 [ext_resource type="Script" path="res://scenes/main_glsl_marching_cubes.gd" id="1_5lhal"]
-[ext_resource type="PackedScene" uid="uid://cgxnkhpiegm2" path="res://addons/marching_cubes_viewer/scenes/controls/glsl/marching_cubes_viewer_glsl.tscn" id="1_tcmp8"]
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scenes/controls/glsl/marching_cubes_viewer_glsl.gd" id="2_ar68c"]
 [ext_resource type="PackedScene" uid="uid://bk62samj5dspq" path="res://scenes/controls/trackball_tumbler.tscn" id="2_vbpbm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_25jua"]
@@ -16,11 +16,13 @@ sky = SubResource("Sky_icpay")
 [node name="TestGlslMarchingCubes" type="Node3D"]
 script = ExtResource("1_5lhal")
 
-[node name="MarchingCubesGlsl" parent="." instance=ExtResource("1_tcmp8")]
+[node name="MarchingCubesViewerGlsl" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_ar68c")
 image_file = "res://art/iguana/Iguana_png.zip"
-cube_resolution = 0.6
+threshold = 0.551
+cube_resolution = 0.846
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1y15q")

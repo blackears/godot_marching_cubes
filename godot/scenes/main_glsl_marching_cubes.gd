@@ -26,8 +26,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	%slider_threshold.value = %MarchingCubesGlsl.threshold
-	%slider_resolution.value = %MarchingCubesGlsl.cube_resolution
+	%slider_threshold.value = %MarchingCubesViewerGlsl.threshold
+	%slider_resolution.value = %MarchingCubesViewerGlsl.cube_resolution
 	pass # Replace with function body.
 
 
@@ -38,11 +38,11 @@ func _process(delta):
 
 
 func _on_slider_threshold_value_changed(value):
-	%MarchingCubesGlsl.threshold = value
+	%MarchingCubesViewerGlsl.threshold = value
 
 
 func _on_slider_resolution_value_changed(value):
-	%MarchingCubesGlsl.cube_resolution = value
+	%MarchingCubesViewerGlsl.cube_resolution = value
 
 
 func _on_bn_save_pressed():
@@ -60,7 +60,7 @@ func _on_save_dialog_file_selected(save_path:String):
 	#var root:Node = plugin.get_editor_interface().get_edited_scene_root()
 	#var root_clean:Node3D = clean_flat(root) if %check_flatten.button_pressed else clean_branch(root)
 	
-	doc.append_from_scene(%MarchingCubesGlsl, state)
+	doc.append_from_scene(%MarchingCubesViewerGlsl, state)
 	doc.write_to_filesystem(state, path)
 		
 
@@ -70,5 +70,5 @@ func _on_bn_load_pressed():
 
 
 func _on_load_dialog_file_selected(path):
-	%MarchingCubesGlsl.image_file = path
+	%MarchingCubesViewerGlsl.image_file = path
 	pass # Replace with function body.

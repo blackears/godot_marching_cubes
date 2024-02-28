@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://w0uh3xqer0ix"]
+
+[node name="TestUseMarchCubeViewer" type="Node3D"]
