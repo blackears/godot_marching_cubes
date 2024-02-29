@@ -23,7 +23,9 @@ Once you've created a node, there are several parameters you can adjust:
 * Image File - a zip file with a stack of images representing the different planes of your 3D volume
 * Threshold - This determines the cutoff of the field.  Basically all voxles in your volume that are greater than this value are considered to be 'inside' and all the other voxels are 'outside'.  The mesh is then constructed that separates the inside from the outside.
 ![Creating a new node](docs/marching_cubes_viewer_properties.jpg)
+
 * Cube Resolution - How dense to make this mesh.  This is rounded to the nearest mipmap level of your source volume.
+
 ![Creating a new node](docs/adjust_resolution.gif)
 
 
