@@ -22,46 +22,50 @@
 # SOFTWARE.
 
 @tool
-extends ImageTexture3D
-class_name ZippedImageArchiveRFTexture3D
+extends ArrayMesh
+class_name PointGrid3D
 
-@export var archive:ZippedImageArchive_RF_3D:
+@export var dimensions:Vector3i = Vector3i(10, 10, 10):
 	get:
-		return archive
-		
+		return dimensions
 	set(value):
-		if value == archive:
+		if value == dimensions:
 			return
+		dimensions = value
 		
-		if archive:
-			archive.zipfile_changed.disconnect(on_archive_changed)
-			
-		archive = value
-
-		if archive:
-			archive.zipfile_changed.connect(on_archive_changed)
-			load_image_from_archive(archive)
-
-func on_archive_changed():
-	load_image_from_archive(archive)
-
-func _validate_property(property : Dictionary):
-	#Do not write image data to resource file
-	if property.name == "_images":
-		property.usage = PROPERTY_USAGE_NONE
+		gen_mesh()
 		
-func load_image_from_archive(archive:ZippedImageArchive_RF_3D):
-	var img_list:Array[Image] = archive.get_image_list().duplicate()
-	var size:Vector3i = archive.get_size()
-	print("tex3d num img " + str(img_list.size()))
+		
+@export var material:Material:
+	get:
+		return material
+	set(value):
+		if value == material:
+			return
+		material = value
+		
+		gen_mesh()
 
-	#Generate mipmaps
-	var rd:RenderingDevice = RenderingServer.create_local_rendering_device()
-	var gen:MipmapGenerator_rf_3d = MipmapGenerator_rf_3d.new(rd)
-	var mipmap_images:Array[Image] = gen.calculate(img_list)
+func gen_mesh():
+	clear_surfaces()
 	
-	img_list.append_array(mipmap_images)
+	var vertices = PackedVector3Array()
+	
+	for k in dimensions.z:
+		for j in dimensions.y:
+			for i in dimensions.x:
+				vertices.push_back(Vector3(i, j, k) / Vector3(dimensions + Vector3i.ONE))
 
-	create(Image.FORMAT_RF, size.x, size.y, size.z, true, img_list)
-	
+	# Initialize the ArrayMesh.
+	var arr_mesh = ArrayMesh.new()
+	var arrays = []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = vertices
+
+	# Create the Mesh.
+	add_surface_from_arrays(Mesh.PRIMITIVE_POINTS, arrays)
+	surface_set_material(0, material)
+
+
+
 

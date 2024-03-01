@@ -63,6 +63,8 @@ var mesh_size_base:Vector3i
 
 var rd:RenderingDevice
 
+var display_mesh:MeshInstance3D
+
 var mesh_build_tool:MeshBuilderTool
 
 func reload_image():
@@ -119,7 +121,7 @@ func reload_image():
 
 	var xform:Transform3D = Transform3D(Basis.from_scale(Vector3(mesh_size_base / min_dim)))
 	xform = xform.translated_local(Vector3(-.5, -.5, -.5))
-	%mesh.transform = xform
+	display_mesh.transform = xform
 
 #class BuildMestTool extends RefCounted:
 	#signal done
@@ -153,7 +155,7 @@ func build_mesh():
 		density_tex_rid, grad_tex_rid)
 	#var end_time_msec = Time.get_ticks_msec()
 
-	%mesh.mesh = mesh
+	display_mesh.mesh = mesh
 	#print("time delta msec ", (end_time_msec - start_time_msec))
 	#var dens_tex_rid:RID = cube_gen.create_texture_image_from_image_stack(image_list, true)
 	
@@ -170,6 +172,9 @@ func build_mesh():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	display_mesh = MeshInstance3D.new()
+	add_child(display_mesh)
+	
 	rd = RenderingServer.create_local_rendering_device()
 	
 	var image_load_thread = Thread.new()

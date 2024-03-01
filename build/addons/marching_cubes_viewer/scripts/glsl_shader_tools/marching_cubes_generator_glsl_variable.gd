@@ -96,9 +96,9 @@ func generate_mesh(result_grid_size:Vector3i, threshold:float, mipmap_lod:float,
 	
 	var build_mesh_done_time:int = Time.get_ticks_msec()
 	
-	print("time running shader msec:", (shader_done_time - start_time))
-	print("time building mesh msec:", (build_mesh_done_time - shader_done_time))
-	print("time total msec:", (build_mesh_done_time - start_time))
+	#print("time running shader msec:", (shader_done_time - start_time))
+	#print("time building mesh msec:", (build_mesh_done_time - shader_done_time))
+	#print("time total msec:", (build_mesh_done_time - start_time))
 	
 	return mesh
 

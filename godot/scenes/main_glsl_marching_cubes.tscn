@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 script = ExtResource("2_ar68c")
 image_file = "res://art/iguana/Iguana_png.zip"
 threshold = 0.551
-cube_resolution = 0.846
+cube_resolution = 0.808
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1y15q")
@@ -99,6 +99,10 @@ position = Vector2i(0, 36)
 size = Vector2i(600, 400)
 access = 2
 filters = PackedStringArray("*.glb,*.gltf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.980416, 7.30467e-09, 0.196939, 0.097354, 0.869271, 0.484655, -0.171193, 0.494336, -0.852247, 0, 3.85286, 0)
+light_color = Color(0.447059, 0.556863, 0.65098, 1)
 
 [connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/slider_threshold" to="." method="_on_slider_threshold_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer2/slider_resolution" to="." method="_on_slider_resolution_value_changed"]

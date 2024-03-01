@@ -232,49 +232,7 @@ func _process(delta):
 		flag_reload_image_file = false
 		flag_update_mesh = true
 		
-		#mutex.lock()
-		#if !thread_reload_image:
-			#thread_reload_image = Thread.new()
-			#thread_reload_image.start(reload_image)
-			#await thread_reload_image.wait_to_finish()
-		##mutex.unlock()
-			#thread_reload_image = null
-		#
-		##reload_image()
-			#flag_reload_image_file = false
-			#flag_update_mesh = true
-		
-	#mutex.lock()
-	
 	if flag_update_mesh:
 		mesh_build_tool.rebuild()
 		flag_update_mesh = false
 		
-		#print("flag_update_mesh %d" % count)
-		#count += 1
-		#if mesh_build_state == BuildState.IDLE:
-			#print("start thread")
-			#flag_update_mesh = false
-			#mesh_build_state = BuildState.BUILDING
-			#thread_build_mesh = Thread.new()
-			#thread_build_mesh.start(build_mesh)
-			#pass
-			#
-	#if mesh_build_state == BuildState.DONE:
-		#print("end thread")
-		#thread_build_mesh.wait_to_finish()
-		#thread_build_mesh = null
-		#mesh_build_state = BuildState.IDLE
-		
-	#mutex.unlock()
-		
-		#if !thread_build_mesh:
-			#print("start thread")
-			#thread_build_mesh = Thread.new()
-			#thread_build_mesh.start(build_mesh)
-			#await thread_build_mesh.wait_to_finish()
-			#thread_build_mesh = null
-			#print("end thread")
-			
-#			flag_update_mesh = false
-	pass

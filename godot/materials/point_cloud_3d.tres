@@ -1,0 +1,86 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://byq7ueum455r1"]
+
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scripts/resources/gpu/zipped_image_archive_rf_3d.gd" id="1_jgdxb"]
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scripts/resources/gpu/zipped_image_archive_rf_Texture3D.gd" id="2_iywu6"]
+
+[sub_resource type="Shader" id="Shader_l8aut"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler3D texture_cutoff : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+varying vec3 vert_pos;
+uniform float cutoff : hint_range(0,1) = .5;
+
+void vertex() {
+	vert_pos = VERTEX.xyz;
+	
+	POINT_SIZE=point_size;
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 cutoff_tex = texture(texture_cutoff, vert_pos);
+	if (cutoff_tex.r < cutoff) {
+		discard;
+	}
+	
+	vec4 albedo_tex = texture(texture_albedo, vec2(cutoff_tex.r, 0));
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+//	ALBEDO = albedo.rgb;
+	
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_8jty3"]
+offsets = PackedFloat32Array(0, 0.124424, 0.368664, 0.626984, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.194376, 0.144152, 1, 0.801045, 0.716162, 3.85046e-07, 1, 7.70092e-07, 0.610511, 0.224647, 1, 0, 0.386233, 0.728376, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ylxl"]
+gradient = SubResource("Gradient_8jty3")
+
+[sub_resource type="Resource" id="Resource_5wv2m"]
+script = ExtResource("1_jgdxb")
+zip_file = "res://art/iguana/Iguana_png.zip"
+
+[sub_resource type="ImageTexture3D" id="ImageTexture3D_2fmwp"]
+script = ExtResource("2_iywu6")
+archive = SubResource("Resource_5wv2m")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_l8aut")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 2.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/cutoff = 0.658
+shader_parameter/texture_albedo = SubResource("GradientTexture1D_6ylxl")
+shader_parameter/texture_cutoff = SubResource("ImageTexture3D_2fmwp")
