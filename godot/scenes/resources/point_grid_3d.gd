@@ -65,7 +65,3 @@ func gen_mesh():
 	# Create the Mesh.
 	add_surface_from_arrays(Mesh.PRIMITIVE_POINTS, arrays)
 	surface_set_material(0, material)
-
-
-
-

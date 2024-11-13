@@ -114,4 +114,3 @@ func load_image_from_zip(path:String):
 #		print("img %d %d %d" % [i, img_list[i].get_width(), img_list[i].get_height()])
 
 	create(img_format, img_width, img_height, img_depth, true, img_list)
-

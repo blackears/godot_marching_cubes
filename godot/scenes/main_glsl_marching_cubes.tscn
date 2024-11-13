@@ -10,7 +10,7 @@
 sky_material = SubResource("ProceduralSkyMaterial_25jua")
 
 [sub_resource type="Environment" id="Environment_1y15q"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_icpay")
 
 [node name="TestGlslMarchingCubes" type="Node3D"]
@@ -21,8 +21,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("2_ar68c")
 image_file = "res://art/iguana/Iguana_png.zip"
-threshold = 0.551
-cube_resolution = 0.808
+threshold = 0.474
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1y15q")

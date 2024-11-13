@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1hc8mhd0htbc"]
+[gd_scene load_steps=5 format=3 uid="uid://d1hc8mhd0htbc"]
 
 [ext_resource type="Material" uid="uid://byq7ueum455r1" path="res://materials/point_cloud_3d.tres" id="1_r4cb3"]
 [ext_resource type="Script" path="res://scenes/resources/point_grid_3d.gd" id="1_w5eac"]
@@ -17,6 +17,9 @@ script = ExtResource("1_w5eac")
 dimensions = Vector3i(40, 40, 40)
 material = ExtResource("1_r4cb3")
 
+[sub_resource type="Environment" id="Environment_1ivxv"]
+background_mode = 1
+
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -25,3 +28,6 @@ mesh = SubResource("ArrayMesh_k2byc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -8, 9, 9)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ivxv")

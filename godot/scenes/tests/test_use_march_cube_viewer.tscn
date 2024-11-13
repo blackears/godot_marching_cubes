@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://w0uh3xqer0ix"]
+[gd_scene load_steps=3 format=3 uid="uid://w0uh3xqer0ix"]
+
+[ext_resource type="Script" path="res://addons/marching_cubes_viewer/scenes/controls/glsl/marching_cubes_viewer_glsl.gd" id="1_1jm7e"]
+
+[sub_resource type="Environment" id="Environment_84jax"]
+background_mode = 1
+background_color = Color(0.0705882, 0.172549, 0.270588, 1)
 
 [node name="TestUseMarchCubeViewer" type="Node3D"]
+
+[node name="MarchingCubesViewerGlsl" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_1jm7e")
+image_file = "res://art/iguana/Iguana_png.zip"
+threshold = 0.187
+cube_resolution = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_84jax")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.838699, 0, -0.544595, 0.387385, 0.702861, 0.596589, 0.382775, -0.711327, 0.589489, 0, 2.08976, 3.01153)
+light_color = Color(0.85098, 0.968627, 0.8, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.927219, -0.220886, -0.302446, -0.10997, 0.932536, -0.343924, 0.35801, -0.285633, -0.888956, 0, 2.08976, -3.81283)
+light_color = Color(0.596078, 0.321569, 0.721569, 1)

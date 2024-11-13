@@ -54,8 +54,7 @@ void fragment() {
 "
 
 [sub_resource type="Gradient" id="Gradient_8jty3"]
-offsets = PackedFloat32Array(0, 0.124424, 0.368664, 0.626984, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.194376, 0.144152, 1, 0.801045, 0.716162, 3.85046e-07, 1, 7.70092e-07, 0.610511, 0.224647, 1, 0, 0.386233, 0.728376, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.386233, 0.728376, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6ylxl"]
 gradient = SubResource("Gradient_8jty3")
@@ -72,7 +71,7 @@ archive = SubResource("Resource_5wv2m")
 render_priority = 0
 shader = SubResource("Shader_l8aut")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/point_size = 2.0
+shader_parameter/point_size = 3.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = null
 shader_parameter/specular = 0.5
@@ -81,6 +80,6 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/cutoff = 0.658
+shader_parameter/cutoff = 0.698
 shader_parameter/texture_albedo = SubResource("GradientTexture1D_6ylxl")
 shader_parameter/texture_cutoff = SubResource("ImageTexture3D_2fmwp")
